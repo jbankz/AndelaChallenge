@@ -2,6 +2,7 @@ package jbankz.com.pojo;
 
 import android.util.Log;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ import static android.content.ContentValues.TAG;
 public class CoinResponse {
 
     @SerializedName("BTC")
+    @Expose
     private BTC btc;
     @SerializedName("ETH")
+    @Expose
     private ETH eth;
 
     public BTC getBtc() {
