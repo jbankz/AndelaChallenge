@@ -59,12 +59,20 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                fetchBtc();
+                testForNetwork();
             }
         });
 
         fetchBtc();
         return view;
+    }
+
+    private void testForNetwork() {
+        if (RetrofitUtil.isConnected(getContext())) {
+            fetchBtc();
+        } else {
+            Toast.makeText(getContext(), "Unable to Connect", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -94,7 +102,7 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
     @Override
     public void onRefresh() {
-        fetchBtc();
+        testForNetwork();
     }
 
 }

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import jbankz.com.utils.APiService;
 import jbankz.com.pojo.CoinResponse;
@@ -34,6 +35,7 @@ public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,8 +54,25 @@ public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefres
             }
         });
 
-        fetchEth();
+        testForNetwork();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                testForNetwork();
+            }
+        });
+
         return view;
+    }
+
+
+    private void testForNetwork() {
+        if (RetrofitUtil.isConnected(getContext())) {
+            fetchEth();
+        } else {
+            Toast.makeText(getContext(), "Unable to Connect", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -87,6 +106,6 @@ public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
     @Override
     public void onRefresh() {
-        fetchEth();
+        testForNetwork();
     }
 }
