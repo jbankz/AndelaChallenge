@@ -11,7 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import jbankz.com.utils.APiService;
 import jbankz.com.pojo.CoinResponse;
@@ -26,7 +31,7 @@ import retrofit2.Response;
  * Created by King Jaycee on 23/10/2017.
  */
 
-public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, BtcAdapter.ListItemClicked {
+public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "BtcFragment";
     APiService aPiService;
@@ -35,6 +40,7 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
+    TextView mText;
 
     @Nullable
     @Override
@@ -42,6 +48,8 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         View view = inflater.inflate(R.layout.recyclerview, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv);
+
+        mText = (TextView) view.findViewById(R.id.currency_price);
 
         layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
@@ -71,11 +79,7 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                     swipeRefreshLayout.setRefreshing(false);
                     CoinResponse coinResponse = response.body();
                     mRecyclerView.setAdapter(new BtcAdapter(coinResponse.getCurrencyBtcList()));
-                } else {
-                    swipeRefreshLayout.setRefreshing(false);
-                    Log.e("MainActivity", response.errorBody().toString());
                 }
-
             }
 
             @Override
@@ -87,13 +91,10 @@ public class BtcFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
     }
 
+
     @Override
     public void onRefresh() {
         fetchBtc();
     }
 
-    @Override
-    public void onListItemClicked(int clickedItem) {
-        Toast.makeText(getContext(), clickedItem, Toast.LENGTH_SHORT).show();
-    }
 }

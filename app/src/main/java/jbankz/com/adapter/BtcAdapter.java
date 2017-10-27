@@ -3,7 +3,6 @@ package jbankz.com.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import jbankz.com.Conversion;
+import jbankz.com.ConversionScreen;
 import jbankz.com.pojo.BTC;
 import jbankz.com.R;
-import jbankz.com.pojo.ETH;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by King Jaycee on 24/10/2017.
@@ -24,10 +20,9 @@ import static android.content.ContentValues.TAG;
 
 public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolder> {
 
-    ArrayList<BTC> btcArrayList;
-    private String name, rate;
-    BTC btc;
+    private static final String TAG = "BtcAdapter";
 
+    private ArrayList<BTC> btcArrayList;
 
     public BtcAdapter(ArrayList<BTC> btcArrayList) {
         this.btcArrayList = btcArrayList;
@@ -41,14 +36,10 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolde
     }
 
     @Override
-    public void onBindViewHolder(AdapterViewHolder holder, int position) {
-        btc = btcArrayList.get(position);
-
-        name = btc.getName();
-        rate = btc.getRate();
-
-        holder.mName.setText(name);
-        holder.mRate.setText(rate);
+    public void onBindViewHolder(AdapterViewHolder holder, final int position) {
+        BTC btc = btcArrayList.get(position);
+        holder.mName.setText(btc.getName());
+        holder.mRate.setText(btc.getRate());
     }
 
     @Override
@@ -71,12 +62,10 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolde
         @Override
         public void onClick(View view) {
             Context context = view.getContext();
-            Intent intent = new Intent(context, Conversion.class);
-            intent.putExtra("name", "BTC");
-            intent.putExtra("rate", btc.getRate());
+            Intent intent = new Intent(context, ConversionScreen.class);
+            BTC btc = btcArrayList.get(getLayoutPosition());
+            intent.putExtra("data", btc);
             context.startActivity(intent);
-
-
         }
     }
 }

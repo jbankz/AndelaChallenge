@@ -14,7 +14,6 @@ import static android.content.ContentValues.TAG;
 
 public class CoinResponse {
 
-
     @SerializedName("BTC")
     private BTC btc;
     @SerializedName("ETH")
