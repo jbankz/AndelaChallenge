@@ -19,10 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".act.ConversionScreen" />
+        <activity
+            android:name=".act.ConversionScreen"
+            android:label="Conversion Screen"
+            android:parentActivityName=".act.MainActivity" />
         <activity
             android:name=".act.EthConversionScreen"
-            android:label="@string/title_activity_eth_conversion_screen"
+            android:label="Conversion Screen"
             android:parentActivityName=".act.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
