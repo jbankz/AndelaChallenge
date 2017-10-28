@@ -72,12 +72,22 @@ public class BTC implements Parcelable{
 
     private String name;
     private String rate;
+    private int images;
 
     public BTC(){}
 
-    public BTC(String name, String rate) {
+    public BTC(int images, String name, String rate) {
+        this.images = images;
         this.name = name;
         this.rate = rate;
+    }
+
+    public int getImages() {
+        return images;
+    }
+
+    public void setImages(int images) {
+        this.images = images;
     }
 
     protected BTC(Parcel in) {

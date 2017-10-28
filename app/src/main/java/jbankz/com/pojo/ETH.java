@@ -71,10 +71,20 @@ public class ETH implements Parcelable{
 
     private String name;
     private String rate;
+    private int image;
 
-    public ETH(String name, String rate) {
+    public ETH(int image, String name, String rate) {
         this.name = name;
         this.rate = rate;
+        this.image = image;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     protected ETH(Parcel in) {

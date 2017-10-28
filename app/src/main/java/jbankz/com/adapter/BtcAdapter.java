@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolde
         BTC btc = btcArrayList.get(position);
         holder.mName.setText(btc.getName());
         holder.mRate.setText(btc.getRate());
+        holder.mImage.setImageResource(btc.getImages());
     }
 
     @Override
@@ -50,11 +52,13 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolde
     class AdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mName, mRate;
+        ImageView mImage;
 
         public AdapterViewHolder(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.currency_symbol);
             mRate = (TextView) itemView.findViewById(R.id.currency_price);
+            mImage = (ImageView) itemView.findViewById(R.id.image_poster);
 
             itemView.setOnClickListener(this);
         }

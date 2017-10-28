@@ -9,8 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import jbankz.com.utils.APiService;
@@ -26,7 +31,7 @@ import retrofit2.Response;
  * Created by King Jaycee on 23/10/2017.
  */
 
-public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class EthFragment extends Fragment{
 
     private static final String TAG = "BtcFragment";
     APiService aPiService;
@@ -34,7 +39,8 @@ public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     String tsyms = "USD" + "," + "EUR" + "," + "GBP" + "," + "NGN" + "," + "CAD" + "," + "SGD" + "," + "CHF" + "," + "MYR" + "," + "JPY" + "," + "CNY" + "," + "BRL" + "," + "EGP" + "," + "GHS" + "," + "KRW" + "," + "MXN" + "," + "QAR" + "," + "RUB" + "," + "SAR" + "," + "ZAR";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView mErrorMessage;
+    private ProgressBar mPb;
 
     @Nullable
     @Override
@@ -42,70 +48,68 @@ public class EthFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         View view = inflater.inflate(R.layout.recyclerview, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
+        setHasOptionsMenu(true);
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv);
+        mErrorMessage = (TextView) view.findViewById(R.id.error_message);
+        mPb = (ProgressBar) view.findViewById(R.id.pb);
+
         layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchEth();
-            }
-        });
 
         testForNetwork();
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                testForNetwork();
-            }
-        });
 
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_refresh) {
+            testForNetwork();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void testForNetwork() {
         if (RetrofitUtil.isConnected(getContext())) {
-            fetchEth();
+            mPb.setVisibility(View.VISIBLE);
+            mErrorMessage.setVisibility(View.INVISIBLE);
+            fetchBtc();
         } else {
-            Toast.makeText(getContext(), "Unable to Connect", Toast.LENGTH_SHORT).show();
+            mErrorMessage.setVisibility(View.VISIBLE);
+            mPb.setVisibility(View.INVISIBLE);
         }
     }
 
 
-    public void fetchEth() {
-        swipeRefreshLayout.setRefreshing(true);
+    public void fetchBtc() {
         RetrofitUtil retrofitUtil = new RetrofitUtil(getContext());
         aPiService = retrofitUtil.provideRetrofit().create(APiService.class);
         aPiService.getPrice(fsyms, tsyms).enqueue(new Callback<CoinResponse>() {
             @Override
             public void onResponse(Call<CoinResponse> call, Response<CoinResponse> response) {
-
                 if (response.isSuccessful()) {
-                    swipeRefreshLayout.setRefreshing(false);
+                    mPb.setVisibility(View.INVISIBLE);
                     CoinResponse coinResponse = response.body();
                     mRecyclerView.setAdapter(new EthAdapter(coinResponse.getCurrencyEthList()));
-                } else {
-                    swipeRefreshLayout.setRefreshing(false);
-                    Log.e("MainActivity", response.errorBody().toString());
                 }
-
             }
 
             @Override
             public void onFailure(Call<CoinResponse> call, Throwable t) {
-                swipeRefreshLayout.setRefreshing(false);
+                mPb.setVisibility(View.INVISIBLE);
+                mErrorMessage.setVisibility(View.VISIBLE);
                 Log.e("MainActivity", t.getMessage().toString());
             }
         });
 
-    }
-
-    @Override
-    public void onRefresh() {
-        testForNetwork();
     }
 }

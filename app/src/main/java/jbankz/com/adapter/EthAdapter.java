@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class EthAdapter extends RecyclerView.Adapter<EthAdapter.AdapterViewHolde
         ETH eth = ethArrayList.get(position);
         holder.mName.setText(eth.getName());
         holder.mRate.setText(eth.getRate());
+        holder.mImage.setImageResource(eth.getImage());
 
     }
 
@@ -50,11 +52,13 @@ public class EthAdapter extends RecyclerView.Adapter<EthAdapter.AdapterViewHolde
     class AdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mName, mRate;
+        ImageView mImage;
 
         public AdapterViewHolder(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.currency_symbol);
             mRate = (TextView) itemView.findViewById(R.id.currency_price);
+            mImage = (ImageView) itemView.findViewById(R.id.image_poster);
 
             itemView.setOnClickListener(this);
         }
