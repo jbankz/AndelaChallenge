@@ -1,6 +1,8 @@
 package jbankz.com.fragment;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -46,9 +48,12 @@ public class BtcFragment extends Fragment {
             + "GHS" + "," + "KRW" + "," + "MXN" + "," + "QAR" + "," + "RUB" + "," + "SAR" + "," + "ZAR";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
-    TextView mErrorMessage;
+    private TextView mErrorMessage;
     private ProgressBar mPb;
-    private CoinResponse coinResponse = new CoinResponse();
+    private final String KEY_RECYCLER_STATE = "recycler_state";
+    private final String KEY_RECYCLER_STATE_LAND = "recycler_state_land";
+    private static Parcelable mBundleRecyclerViewState;
+    private static Parcelable mBundleRecyclerLan;
 
 
     @Nullable
@@ -85,6 +90,53 @@ public class BtcFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save list state
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mBundleRecyclerViewState = layoutManager.onSaveInstanceState();
+            outState.putParcelable(KEY_RECYCLER_STATE, mBundleRecyclerViewState);
+        } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mBundleRecyclerLan = layoutManager.onSaveInstanceState();
+            outState.putParcelable(KEY_RECYCLER_STATE_LAND, mBundleRecyclerLan);
+        }
+
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        // Retrieve list state and list/item positions
+        if (savedInstanceState != null) {
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                mBundleRecyclerViewState = savedInstanceState.getParcelable(KEY_RECYCLER_STATE);
+            } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                mBundleRecyclerLan = savedInstanceState.getParcelable(KEY_RECYCLER_STATE_LAND);
+            }
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mBundleRecyclerViewState != null) {
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                layoutManager.onRestoreInstanceState(mBundleRecyclerViewState);
+            } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                layoutManager.onRestoreInstanceState(mBundleRecyclerLan);
+            }
+
+        }
+    }
+
 
     private void testForNetwork() {
         if (RetrofitUtil.isConnected(getContext())) {
