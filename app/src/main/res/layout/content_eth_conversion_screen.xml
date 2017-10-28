@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="jbankz.com.EthConversionScreen"
+    tools:context="jbankz.com.act.EthConversionScreen"
     tools:showIn="@layout/activity_eth_conversion_screen">
 
     <LinearLayout

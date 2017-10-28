@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import jbankz.com.ConversionScreen;
-import jbankz.com.EthConversionScreen;
-import jbankz.com.pojo.BTC;
+import jbankz.com.act.EthConversionScreen;
 import jbankz.com.pojo.ETH;
 import jbankz.com.R;
 

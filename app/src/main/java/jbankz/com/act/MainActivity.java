@@ -1,9 +1,10 @@
-package jbankz.com;
+package jbankz.com.act;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import jbankz.com.R;
 import jbankz.com.fragment.SlidingTabFragment;
 
 public class MainActivity extends AppCompatActivity {

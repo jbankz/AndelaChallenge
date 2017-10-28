@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import jbankz.com.ConversionScreen;
+import jbankz.com.act.ConversionScreen;
 import jbankz.com.pojo.BTC;
 import jbankz.com.R;
 

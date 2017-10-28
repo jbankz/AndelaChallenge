@@ -12,22 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".act.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConversionScreen" />
+        <activity android:name=".act.ConversionScreen" />
         <activity
-            android:name=".EthConversionScreen"
+            android:name=".act.EthConversionScreen"
             android:label="@string/title_activity_eth_conversion_screen"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".act.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="jbankz.com.MainActivity" />
+                android:value="jbankz.com.act.MainActivity" />
         </activity>
     </application>
 
