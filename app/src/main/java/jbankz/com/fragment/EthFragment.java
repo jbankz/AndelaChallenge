@@ -38,7 +38,10 @@ public class EthFragment extends Fragment{
     private static final String TAG = "BtcFragment";
     APiService aPiService;
     String fsyms = "ETH";
-    String tsyms = "USD" + "," + "EUR" + "," + "GBP" + "," + "NGN" + "," + "CAD" + "," + "SGD" + "," + "CHF" + "," + "MYR" + "," + "JPY" + "," + "CNY" + "," + "BRL" + "," + "EGP" + "," + "GHS" + "," + "KRW" + "," + "MXN" + "," + "QAR" + "," + "RUB" + "," + "SAR" + "," + "ZAR";
+    String tsyms = "USD" + "," + "EUR" + "," + "GBP" + "," + "NGN" + "," +
+            "CAD" + "," + "SGD" + "," + "CHF" + "," + "MYR" + "," + "JPY" +
+            "," + "CNY" + "," + "BRL" + "," + "EGP" + "," + "GHS" + "," + "KRW" +
+            "," + "MXN" + "," + "QAR" + "," + "RUB" + "," + "SAR" + "," + "ZAR";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
     private TextView mErrorMessage;
