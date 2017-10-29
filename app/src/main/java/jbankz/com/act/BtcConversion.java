@@ -62,7 +62,7 @@ public class BtcConversion extends AppCompatActivity {
         } else {
             double userValue = Double.parseDouble(value);
             double rate = Double.parseDouble(receivedDataRate);
-            mNewRate.setText(String.valueOf(userValue * rate) + btc.getName());
+            mNewRate.setText(String.valueOf(btc.getName() + " " + userValue * rate));
         }
     }
 

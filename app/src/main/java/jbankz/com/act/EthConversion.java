@@ -58,7 +58,7 @@ public class EthConversion extends AppCompatActivity {
         } else {
             double userValue = Double.parseDouble(value);
             double rate = Double.parseDouble(receivedDataRate);
-            mNewRate.setText(String.valueOf(userValue * rate) + eth.getName());
+            mNewRate.setText(String.valueOf(eth.getName() + " " + userValue * rate));
         }
     }
 }
