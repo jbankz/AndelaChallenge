@@ -33,6 +33,7 @@
             android:background="@drawable/text"
             android:hint="Enter Amount to be Converted"
             android:inputType="number"
+            android:padding="10dp"
             android:textStyle="bold" />
 
 
