@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import jbankz.com.act.EthConversionScreen;
+import jbankz.com.act.EthConversion;
 import jbankz.com.pojo.ETH;
 import jbankz.com.R;
 
@@ -64,7 +64,7 @@ public class EthAdapter extends RecyclerView.Adapter<EthAdapter.AdapterViewHolde
         @Override
         public void onClick(View view) {
             Context context = view.getContext();
-            Intent intent = new Intent(context, EthConversionScreen.class);
+            Intent intent = new Intent(context, EthConversion.class);
             ETH eth = ethArrayList.get(getLayoutPosition());
             intent.putExtra("data", eth);
             context.startActivity(intent);

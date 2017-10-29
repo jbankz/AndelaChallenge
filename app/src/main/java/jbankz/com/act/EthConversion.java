@@ -17,7 +17,7 @@ public class EthConversion extends AppCompatActivity {
     private EditText mExchange;
     private TextView mName, mRate, mNewRate;
     private String receivedDataRate;
-
+    private ETH eth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +36,13 @@ public class EthConversion extends AppCompatActivity {
         mName = (TextView) findViewById(R.id.from_indicator);
         mNewRate = (TextView) findViewById(R.id.new_rate);
 
-        ETH eth = getIntent().getParcelableExtra("data");
+        eth = getIntent().getParcelableExtra("data");
 
         mName.setText(eth.getName());
 
         receivedDataRate = eth.getRate();
 
-        mRate.setText("Rate: " + receivedDataRate);
+        mRate.setText("1 " + eth.getName() + " = " + receivedDataRate);
 
     }
 
@@ -58,7 +58,7 @@ public class EthConversion extends AppCompatActivity {
         } else {
             double userValue = Double.parseDouble(value);
             double rate = Double.parseDouble(receivedDataRate);
-            mNewRate.setText(String.valueOf(userValue * rate));
+            mNewRate.setText(String.valueOf(userValue * rate) + eth.getName());
         }
     }
 }

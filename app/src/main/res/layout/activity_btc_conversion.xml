@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jbankz.com.act.EthConversionScreen">
+    tools:context="jbankz.com.act.BtcConversion">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_eth_conversion_screen" />
+    <include layout="@layout/content_btc_conversion" />
 
 </android.support.design.widget.CoordinatorLayout>

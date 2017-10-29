@@ -157,6 +157,7 @@ public class BtcFragment extends Fragment {
             @Override
             public void onResponse(Call<CoinResponse> call, Response<CoinResponse> response) {
                 if (response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.raw());
                     mPb.setVisibility(View.INVISIBLE);
                     CoinResponse coinResponse = response.body();
                     mRecyclerView.setAdapter(new BtcAdapter(coinResponse.getCurrencyBtcList()));

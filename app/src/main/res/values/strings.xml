@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Crypto Compare</string>
-    <string name="title_activity_eth_conversion_screen">EthConversionScreen</string>
     <string name="error_message">Sorry! Unable to connect...</string>
+    <string name="title_activity_conversion">Conversion</string>
+    <string name="title_activity_eth_conversion">EthConversion</string>
 </resources>

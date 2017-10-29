@@ -6,10 +6,9 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="10dp"
-    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="jbankz.com.act.EthConversionScreen"
-    tools:showIn="@layout/activity_eth_conversion_screen">
+    tools:context="jbankz.com.act.EthConversion"
+    tools:showIn="@layout/activity_eth_conversion">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,22 +19,21 @@
             android:id="@+id/rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="rate:"
+            android:layout_marginTop="20dp"
+            android:text="Rate"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/text"
             android:hint="Enter Amount to be Converted"
             android:inputType="number"
-            android:textStyle="bold"
-            android:textColor="@color/colorAccent"/>
+            android:textStyle="bold" />
 
 
         <ImageView
@@ -52,7 +50,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="USD"
-            android:textColor="@color/white"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -70,9 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Returned Value"
+            android:text="Converted Value"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorAccent"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -83,8 +79,8 @@
             android:layout_marginTop="10dp"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-            android:textSize="16sp"
-            android:textColor="@color/white"
+            android:textColor="@color/pink"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
     </LinearLayout>

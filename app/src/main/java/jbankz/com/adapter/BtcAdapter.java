@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import jbankz.com.act.ConversionScreen;
+import jbankz.com.act.BtcConversion;
 import jbankz.com.pojo.BTC;
 import jbankz.com.R;
 
@@ -66,7 +66,7 @@ public class BtcAdapter extends RecyclerView.Adapter<BtcAdapter.AdapterViewHolde
         @Override
         public void onClick(View view) {
             Context context = view.getContext();
-            Intent intent = new Intent(context, ConversionScreen.class);
+            Intent intent = new Intent(context, BtcConversion.class);
             BTC btc = btcArrayList.get(getLayoutPosition());
             intent.putExtra("data", btc);
             context.startActivity(intent);

@@ -1,32 +1,35 @@
 package jbankz.com.act;
 
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import jbankz.com.R;
 import jbankz.com.pojo.BTC;
 
-public class ConversionScreen extends AppCompatActivity {
+public class BtcConversion extends AppCompatActivity {
 
     private EditText mExchange;
     private TextView mName, mRate, mNewRate;
     private String receivedDataRate;
+    private BTC btc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversion_screen);
+        setContentView(R.layout.activity_btc_conversion);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.setTitle("Conversion Screen");
 
@@ -37,24 +40,14 @@ public class ConversionScreen extends AppCompatActivity {
         mName = (TextView) findViewById(R.id.from_indicator);
         mNewRate = (TextView) findViewById(R.id.new_rate);
 
-        BTC btc = getIntent().getParcelableExtra("data");
+        btc = getIntent().getParcelableExtra("data");
 
         mName.setText(btc.getName());
 
         receivedDataRate = btc.getRate();
 
-        mRate.setText("Rate: " + receivedDataRate);
+        mRate.setText("1 " + btc.getName() + " = " + receivedDataRate);
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public void btnConvert(View view) {
@@ -66,10 +59,11 @@ public class ConversionScreen extends AppCompatActivity {
 
         if (value.isEmpty() || value.length() == 0 || value.equals("") || value == null) {
             return;
-        }else {
+        } else {
             double userValue = Double.parseDouble(value);
             double rate = Double.parseDouble(receivedDataRate);
-            mNewRate.setText(String.valueOf(userValue * rate));
+            mNewRate.setText(String.valueOf(userValue * rate) + btc.getName());
         }
     }
+
 }
