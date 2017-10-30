@@ -69,6 +69,17 @@ public class BTC implements Parcelable{
     @SerializedName("ZAR")
     @Expose
     private String zar;
+    @SerializedName("XOF")
+    @Expose
+    private String xof;
+
+    public String getXof() {
+        return xof;
+    }
+
+    public void setXof(String xof) {
+        this.xof = xof;
+    }
 
     private String name;
     private String rate;
@@ -112,6 +123,7 @@ public class BTC implements Parcelable{
         zar = in.readString();
         name = in.readString();
         rate = in.readString();
+        xof = in.readString();
     }
 
     public String getUsd() {
@@ -310,6 +322,7 @@ public class BTC implements Parcelable{
         parcel.writeString(zar);
         parcel.writeString(name);
         parcel.writeString(rate);
+        parcel.writeString(xof);
     }
 
     public static final Creator<BTC> CREATOR = new Creator<BTC>() {

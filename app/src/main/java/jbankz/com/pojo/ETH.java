@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by King Jaycee on 18/10/2017.
  */
 
-public class ETH implements Parcelable{
+public class ETH implements Parcelable {
     @SerializedName("USD")
     @Expose
     private String usd;
@@ -68,6 +68,9 @@ public class ETH implements Parcelable{
     @SerializedName("ZAR")
     @Expose
     private String zar;
+    @SerializedName("XOF")
+    @Expose
+    private String xof;
 
     private String name;
     private String rate;
@@ -77,6 +80,14 @@ public class ETH implements Parcelable{
         this.name = name;
         this.rate = rate;
         this.image = image;
+    }
+
+    public String getXof() {
+        return xof;
+    }
+
+    public void setXof(String xof) {
+        this.xof = xof;
     }
 
     public int getImage() {
@@ -109,6 +120,7 @@ public class ETH implements Parcelable{
         zar = in.readString();
         name = in.readString();
         rate = in.readString();
+        xof = in.readString();
     }
 
     public static final Creator<ETH> CREATOR = new Creator<ETH>() {
@@ -312,6 +324,7 @@ public class ETH implements Parcelable{
                 ", qar=" + qar +
                 ", rub=" + rub +
                 ", sar=" + sar +
+                ", xof=" + xof +
                 ", zar=" + zar +
                 '}';
     }
@@ -345,5 +358,6 @@ public class ETH implements Parcelable{
         parcel.writeString(zar);
         parcel.writeString(name);
         parcel.writeString(rate);
+        parcel.writeString(xof);
     }
 }

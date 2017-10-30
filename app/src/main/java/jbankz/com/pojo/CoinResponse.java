@@ -58,7 +58,7 @@ public class CoinResponse {
         currencyBtcList.add(new BTC(R.drawable.cny, "CNY", getBtc().getCny()));
         currencyBtcList.add(new BTC(R.drawable.sar, "SAR", getBtc().getSar()));
         currencyBtcList.add(new BTC(R.drawable.zar, "ZAR", getBtc().getZar()));
-
+        currencyBtcList.add(new BTC(R.drawable.xof, "XOF", getBtc().getXof()));
         return currencyBtcList;
     }
 
@@ -84,6 +84,7 @@ public class CoinResponse {
         currencyEthList.add(new ETH(R.drawable.rub, "RUB", getEth().getRub()));
         currencyEthList.add(new ETH(R.drawable.sar, "SAR", getEth().getSar()));
         currencyEthList.add(new ETH(R.drawable.zar, "ZAR", getEth().getZar()));
+        currencyEthList.add(new ETH(R.drawable.xof, "XOF", getEth().getXof()));
 
         return currencyEthList;
     }
