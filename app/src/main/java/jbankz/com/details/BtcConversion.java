@@ -42,7 +42,7 @@ public class BtcConversion extends AppCompatActivity {
 
         receivedDataRate = btc.getRate();
 
-        mRate.setText("1 BTC " + "=" + btc.getName() + receivedDataRate);
+        mRate.setText("1 BTC " + "= " + btc.getName() + receivedDataRate);
 
     }
 
