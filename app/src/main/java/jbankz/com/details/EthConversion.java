@@ -40,7 +40,7 @@ public class EthConversion extends AppCompatActivity {
 
         receivedDataRate = eth.getRate();
 
-        mRate.setText("1 BTC " + "=" + eth.getName() + receivedDataRate);
+                mRate.setText("1 ETH " + "=" + eth.getName() + receivedDataRate);
 
     }
 
