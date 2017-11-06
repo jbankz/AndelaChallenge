@@ -1,8 +1,6 @@
-package jbankz.com.act;
+package jbankz.com.details;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -42,7 +40,7 @@ public class EthConversion extends AppCompatActivity {
 
         receivedDataRate = eth.getRate();
 
-        mRate.setText("1 " + eth.getName() + " = " + receivedDataRate);
+        mRate.setText("1 BTC " + "=" + eth.getName() + receivedDataRate);
 
     }
 

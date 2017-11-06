@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".act.MainActivity">
+        <activity android:name=".details.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,22 +20,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".act.BtcConversion"
+            android:name=".details.BtcConversion"
             android:label="@string/title_activity_conversion"
-            android:parentActivityName=".act.MainActivity"
+            android:parentActivityName=".details.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="jbankz.com.act.MainActivity" />
+                android:value="jbankz.com.details.MainActivity" />
         </activity>
         <activity
-            android:name=".act.EthConversion"
+            android:name=".details.EthConversion"
             android:label="@string/title_activity_eth_conversion"
-            android:parentActivityName=".act.MainActivity"
+            android:parentActivityName=".details.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="jbankz.com.act.MainActivity" />
+                android:value="jbankz.com.details.MainActivity" />
         </activity>
     </application>
 

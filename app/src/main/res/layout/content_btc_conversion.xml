@@ -7,7 +7,7 @@
     android:fillViewport="true"
     android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="jbankz.com.act.BtcConversion"
+    tools:context="jbankz.com.details.BtcConversion"
     tools:showIn="@layout/activity_btc_conversion">
 
     <LinearLayout

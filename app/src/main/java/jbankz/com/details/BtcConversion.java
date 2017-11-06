@@ -1,15 +1,11 @@
-package jbankz.com.act;
+package jbankz.com.details;
 
-import android.icu.text.DecimalFormat;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import jbankz.com.R;
 import jbankz.com.pojo.BTC;
@@ -46,7 +42,7 @@ public class BtcConversion extends AppCompatActivity {
 
         receivedDataRate = btc.getRate();
 
-        mRate.setText("1 " + btc.getName() + " = " + receivedDataRate);
+        mRate.setText("1 BTC " + "=" + btc.getName() + receivedDataRate);
 
     }
 
