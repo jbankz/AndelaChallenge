@@ -48,7 +48,8 @@ public class BtcFragment extends Fragment {
     String tsyms = "USD" + "," + "EUR" + "," + "GBP" + "," + "NGN" +
             "," + "CAD" + "," + "SGD" + "," + "CHF" + "," + "MYR" + ","
             + "JPY" + "," + "CNY" + "," + "BRL" + "," + "EGP" + ","
-            + "GHS" + "," + "KRW" + "," + "MXN" + "," + "QAR" + "," + "RUB" + "," + "SAR" + "," + "ZAR" + "," + "XOF";
+            + "GHS" + "," + "KRW" + "," + "MXN" + "," + "QAR" + "," +
+            "RUB" + "," + "SAR" + "," + "ZAR" + "," + "XOF";
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
     private TextView mErrorMessage;
