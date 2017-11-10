@@ -27,7 +27,7 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:textColor="#000"/>
 
     </LinearLayout>
 
@@ -39,7 +39,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="Currency Price"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/pink"
         android:textSize="22sp" />
 
 </LinearLayout>
