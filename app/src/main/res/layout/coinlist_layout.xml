@@ -23,11 +23,11 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
             android:gravity="center"
-            android:text="Currency Name"
+            android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            android:textColor="#000"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -38,7 +38,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Currency Price"
+        android:text=""
         android:textColor="@color/pink"
         android:textSize="22sp" />
 
